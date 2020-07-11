@@ -4,13 +4,14 @@ body {
   line-height: 1;
 }
 
-textarea{
+input{
   background: transparent;
   border: none;
   resize: none;
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+  height:80px;
 }
 
 .jumbotron {
@@ -32,14 +33,15 @@ textarea{
 
 .row {
   white-space: pre-wrap;
-  height: 80px;
   border-top: 1px solid white;;
+  width: 100%;
 }
 
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+ 
 }
 
 .past {
@@ -69,3 +71,4 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
