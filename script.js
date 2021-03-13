@@ -18,7 +18,7 @@ Object.keys(inputEntrees).forEach(function (key) {
     //set a variable of i since the keys start at 9 and increment up
     //I can now access the hourText array using i like in a for loop
     let i = key - 9
-    //creates a div to hold an hour
+    //creates a div to hold timeslot, inputSection, and savebtn
     let divrow = $("<div></div>").addClass("time-block input-group mb-3");
     //creates the time span setting text from the hourText array
     let timeslot = $("<span></span>").text(hourText[i]).addClass("input-group-prepend input-group-text");
@@ -28,12 +28,8 @@ Object.keys(inputEntrees).forEach(function (key) {
     inputSection.val(inputEntrees[key])
     //create save button and adds a defined value of the key
     let savebtn = $("<button class='saveBtn input-group-append input-group-text'>Save</button>").attr("value", key);
-    //appends the three sections to the divrow
-    divrow.append(timeslot);
-    divrow.append(inputSection);
-    divrow.append(savebtn);
-    //appends the divrow to the contianer div in the html
-    $(".container").append(divrow);
+    //appends the divrow to the contianer div in the html  and the three sections to the divrow
+    $(".container").append(divrow.append(timeslot, inputSection, savebtn));
 });
 
 //gets the html by id and sets the text to the current day using momentJS
