@@ -1,29 +1,25 @@
-//array to show in time slot
-let hourText = ["9:00AM", "10:00AM", "11:00AM", "12:00PM", "1:00PM", "2:00PM", "3:00PM", "4:00PM", "5:00PM"]
 //set inputEntrees to object from local storage
 //or object representing the military times and associated inputs
 let inputEntrees = JSON.parse(localStorage.getItem("plans")) || {
-    9: " ",
-    10: " ",
-    11: " ",
-    12: " ",
-    13: " ",
-    14: " ",
-    15: " ",
-    16: " ",
-    17: " ",
+    '9:00AM': " ",
+    '10:00AM': " ",
+    '11:00AM': " ",
+    '12:00PM': " ",
+    '1:00PM': " ",
+    '2:00PM': " ",
+    '3:00PM': " ",
+    '4:00PM': " ",
+    '5:00PM': " ",
 }
+
 //return array of object keys and loops for each key
 Object.keys(inputEntrees).forEach(function (key) {
-    //set a variable of i since the keys start at 9 and increment up
-    //I can now access the hourText array using i like in a for loop
-    let i = key - 9
     //creates a div to hold timeslot, inputSection, and savebtn
     let divrow = $("<div></div>").addClass("time-block input-group mb-3");
     //creates the time span setting text from the hourText array
-    let timeslot = $("<span></span>").text(hourText[i]).addClass("input-group-prepend input-group-text");
+    let timeslot = $("<span></span>").text(key).addClass("input-group-prepend input-group-text");
     //creates input with key with an id and data-input matching the key 
-    let inputSection = $("<input></input>").addClass("input form-control").attr("id", key).attr("data-input", key);
+    let inputSection = $("<input></input>").addClass("input form-control").attr("id", key.split(':')[0]).attr("data-input", key.split(':')[0]);
     //updates the value of that input with matching value in inputEntrees
     inputSection.val(inputEntrees[key])
     //create save button and adds a defined value of the key
@@ -60,7 +56,7 @@ $("button").click(function (e) {
     //gets the value of that button
     let id = e.target.value
     //updates inputEntrees with the new input value
-    inputEntrees[id] = $("#" + id).val().trim()
+    inputEntrees[id] = $("#" + id.split(':')[0]).val().trim()
     //puts inputEntrees into local storage
     localStorage.setItem("plans", JSON.stringify(inputEntrees));
 });
