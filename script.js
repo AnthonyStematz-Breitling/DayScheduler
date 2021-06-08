@@ -60,3 +60,4 @@ $("button").click(function (e) {
     //puts inputEntrees into local storage
     localStorage.setItem("plans", JSON.stringify(inputEntrees));
 });
+
